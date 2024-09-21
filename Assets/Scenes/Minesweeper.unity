@@ -132,6 +132,8 @@ GameObject:
   m_Component:
   - component: {fileID: 318226147}
   - component: {fileID: 318226146}
+  - component: {fileID: 318226149}
+  - component: {fileID: 318226148}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -167,6 +169,71 @@ Transform:
   - {fileID: 1058388688}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &318226148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318226145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4a7dfe89dfce54da01077b7affba2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 1058388690}
+  MainCamera: {fileID: 519420031}
+  tileUnknown: {fileID: 11400000, guid: e1eafe891efcd574f88fb7775390a3d6, type: 2}
+  tileEmpty: {fileID: 11400000, guid: 5a057696999f1ce4fb4e9e4af5240748, type: 2}
+  tileMine: {fileID: 11400000, guid: ec388af1c6399254f97165b53c82694b, type: 2}
+  tileExploded: {fileID: 11400000, guid: e3b99d9afd8adf444938272fca849501, type: 2}
+  tileFlag: {fileID: 11400000, guid: af9d5acb4ae953d4d896275551dd09ee, type: 2}
+  tileNum1: {fileID: 11400000, guid: b1d6503501c81a449917c7388b4db901, type: 2}
+  tileNum2: {fileID: 11400000, guid: 55c7226c392681145a5508199019bd77, type: 2}
+  tileNum3: {fileID: 11400000, guid: 35302a4bf796fbd43b54cf01e8fc3281, type: 2}
+  tileNum4: {fileID: 11400000, guid: 1f76254b1d167184281dde5af28c4180, type: 2}
+  tileNum5: {fileID: 11400000, guid: 6220d85480980e04fac80218accbe1be, type: 2}
+  tileNum6: {fileID: 11400000, guid: e9f2c9ba82346e64ea6e386cc82b2820, type: 2}
+  tileNum7: {fileID: 11400000, guid: 7a712efe762d0e941935abf39327006a, type: 2}
+  tileNum8: {fileID: 11400000, guid: f1fb8e8071123324facf3fe664a11c6b, type: 2}
+--- !u!1839735485 &318226149
+Tilemap:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318226145}
+  m_Enabled: 1
+  m_Tiles: {}
+  m_AnimatedTiles: {}
+  m_TileAssetArray: []
+  m_TileSpriteArray: []
+  m_TileMatrixArray: []
+  m_TileColorArray: []
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0, y: 0, z: 1}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
+  m_TileOrientation: 0
+  m_TileOrientationMatrix:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +245,8 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -260,7 +328,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
+--- !u!1839735485 &519420034
+Tilemap:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_Tiles: {}
+  m_AnimatedTiles: {}
+  m_TileAssetArray: []
+  m_TileSpriteArray: []
+  m_TileMatrixArray: []
+  m_TileColorArray: []
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0, y: 0, z: 1}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
+  m_TileOrientation: 0
+  m_TileOrientationMatrix:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+--- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,24 +375,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b4a7dfe89dfce54da01077b7affba2c, type: 3}
+  m_Script: {fileID: 11500000, guid: e047bcd9eb6847dc9c2f7e157d16f091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 1058388690}
-  MainCamera: {fileID: 519420031}
-  tileUnknown: {fileID: 11400000, guid: e1eafe891efcd574f88fb7775390a3d6, type: 2}
-  tileEmpty: {fileID: 11400000, guid: 5a057696999f1ce4fb4e9e4af5240748, type: 2}
-  tileMine: {fileID: 11400000, guid: ec388af1c6399254f97165b53c82694b, type: 2}
-  tileExploded: {fileID: 11400000, guid: e3b99d9afd8adf444938272fca849501, type: 2}
-  tileFlag: {fileID: 11400000, guid: af9d5acb4ae953d4d896275551dd09ee, type: 2}
-  tileNum1: {fileID: 11400000, guid: b1d6503501c81a449917c7388b4db901, type: 2}
-  tileNum2: {fileID: 11400000, guid: 55c7226c392681145a5508199019bd77, type: 2}
-  tileNum3: {fileID: 11400000, guid: 35302a4bf796fbd43b54cf01e8fc3281, type: 2}
-  tileNum4: {fileID: 11400000, guid: 1f76254b1d167184281dde5af28c4180, type: 2}
-  tileNum5: {fileID: 11400000, guid: 6220d85480980e04fac80218accbe1be, type: 2}
-  tileNum6: {fileID: 11400000, guid: e9f2c9ba82346e64ea6e386cc82b2820, type: 2}
-  tileNum7: {fileID: 11400000, guid: 7a712efe762d0e941935abf39327006a, type: 2}
-  tileNum8: {fileID: 11400000, guid: f1fb8e8071123324facf3fe664a11c6b, type: 2}
+  gameBoard: {fileID: 318226148}
+  Witdh: 10
+  Height: 20
 --- !u!1 &1058388687
 GameObject:
   m_ObjectHideFlags: 0
