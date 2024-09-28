@@ -18,28 +18,30 @@ public class Game : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        GameState = new GameState { state = GameState.StateOfTheGame.Waiting };
+        
         // gameBoard = GetComponentInChildren<Board>();
     }
 
     public void NewGame()
     {
         gameBoard.CreateGame(Witdh, Height);
-        // Génére la grid avec les cells 
-        // Génère les bombe 
-        // Génère les numéro 
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            gameBoard.ChangeTiles(Input.mousePosition);
+
+            gameBoard.PlayPosition(Input.mousePosition);
         }
 
         if (Input.GetMouseButtonDown(1))
         {
             gameBoard.FlagPosition(Input.mousePosition);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gameBoard.RestartGame();
         }
     }
 }
