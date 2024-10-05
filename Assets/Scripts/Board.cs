@@ -33,19 +33,17 @@ public class Board : MonoBehaviour
 
     public bool IsGameOver = false;
 
-    public void CreateGame(int witdh, int height)
+    public void CreateGame(int width, int height)
     {
-        Witdh = witdh;
+        Witdh = width;
         Height = height;
-        MainCamera.transform.position = new Vector3(Witdh / 2, Height / 2, -10);
+        MainCamera.transform.position = new Vector3(width / 2f, height / 2f, -10f);
         Gameboard = new Cell[Witdh, Height];
         for (int i = 0; i < Witdh; i++)
         {
             for (int j = 0; j < Height; j++)
             {
                 tilemap.SetTile(new Vector3Int(i, j, 0), tileUnknown);
-
-
                 Gameboard[i, j] = new Cell
                     { position = new Vector3Int(i, j, 0), type = Cell.Type.Empty, revealed = false };
             }
@@ -133,19 +131,17 @@ public class Board : MonoBehaviour
         }
 
         Gameboard[cell.position.x, cell.position.y].revealed = true;
-
         RevealTiles(cell.position);
-
         if (cell.type == Cell.Type.Empty)
         {
-            flood(GetCell(cell.position.x - 1, cell.position.y));
-            flood(GetCell(cell.position.x - 1, cell.position.y));
             flood(GetCell(cell.position.x - 1, cell.position.y + 1));
-            flood(GetCell(cell.position.x + 1, cell.position.y - 1));
-            flood(GetCell(cell.position.x, cell.position.y - 1));
             flood(GetCell(cell.position.x, cell.position.y + 1));
-            flood(GetCell(cell.position.x - 1, cell.position.y + 1));
             flood(GetCell(cell.position.x + 1, cell.position.y + 1));
+            flood(GetCell(cell.position.x + 1, cell.position.y));
+            flood(GetCell(cell.position.x - 1, cell.position.y));
+            flood(GetCell(cell.position.x - 1, cell.position.y - 1));
+            flood(GetCell(cell.position.x, cell.position.y - 1));
+            flood(GetCell(cell.position.x + 1, cell.position.y - 1));
         }
     }
 
@@ -164,6 +160,11 @@ public class Board : MonoBehaviour
     public void FlagPosition(Vector3 mousePosition)
     {
         Vector3Int tilePosition = GetMousePosition(mousePosition);
+        if (IsGameOver || Gameboard[tilePosition.x, tilePosition.y].revealed)
+        {
+            return;
+        }
+
         Gameboard[tilePosition.x, tilePosition.y].isFlagged ^= true;
         tilemap.SetTile(tilePosition, Gameboard[tilePosition.x, tilePosition.y].isFlagged ? tileFlag : tileUnknown);
     }
@@ -172,7 +173,6 @@ public class Board : MonoBehaviour
     private Tile GetTilesByPosition(Vector3Int cellPosition)
     {
         Cell cell = Gameboard[cellPosition.x, cellPosition.y];
-
         if (cell.isFlagged)
         {
             return tileFlag;
@@ -228,21 +228,17 @@ public class Board : MonoBehaviour
     {
         for (int number = 0; number < 30; number++)
         {
-            
-          
-            
-            
-            
-                var xRange = Random.Range(0, Witdh);
-                var yRange = Random.Range(0, Height);
-                if (Gameboard[xRange, yRange].type == Cell.Type.Mine)
-                {
-                    
-                }
-            
-          
-            // tilemap.SetTile(new Vector3Int(xRange, yRange, 0), tileExploded);
-            // TODO CHANGER CAR PAS LE BON NOMBRE 
+            var xRange = Random.Range(0, Witdh);
+            var yRange = Random.Range(0, Height);
+            Cell cell = Gameboard[xRange, yRange];
+            while (cell.type == Cell.Type.Mine)
+            {
+                xRange = Random.Range(0, Witdh);
+                yRange = Random.Range(0, Height);
+
+                cell = Gameboard[xRange, yRange];
+            }
+
             Gameboard[xRange, yRange] = new Cell
                 { position = new Vector3Int(xRange, yRange, 0), type = Cell.Type.Mine };
         }

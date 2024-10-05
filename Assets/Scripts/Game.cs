@@ -18,8 +18,6 @@ public class Game : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        
-        // gameBoard = GetComponentInChildren<Board>();
     }
 
     public void NewGame()
@@ -31,7 +29,6 @@ public class Game : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-
             gameBoard.PlayPosition(Input.mousePosition);
         }
 
